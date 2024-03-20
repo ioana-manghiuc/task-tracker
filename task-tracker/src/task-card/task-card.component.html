@@ -1,0 +1,14 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ task?.title }}</mat-card-title>
+    <mat-card-subtitle>{{ task?.description }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select [disabled]="false">
+        <mat-option *ngFor="let status of statusOptions" [value]="status">{{ status }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-actions>
+</mat-card>
