@@ -5,10 +5,11 @@ import { Task } from '../task';
 import { TaskListComponent } from '../task-list/task-list.component';
 import { NgFor, NgIf } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
+import { FilterComponent } from '../filter/filter.component';
 @Component({
   selector: 'app-tasks-view',
   standalone: true,
-  imports: [TaskGridComponent, TaskListComponent, NgFor, NgIf, MatIconModule],
+  imports: [TaskGridComponent, TaskListComponent, NgFor, NgIf, MatIconModule, FilterComponent],
   templateUrl: './tasks-view.component.html',
   styleUrl: './tasks-view.component.scss'
 })
@@ -27,5 +28,9 @@ export class TasksViewComponent implements OnInit{
   isList = true;
   toggleView(viewMode: string) {
     this.isList = viewMode === 'list';
+  }
+
+  handleStatusSelected(status: Status) {
+    console.log('Selected status:', status);
   }
 }

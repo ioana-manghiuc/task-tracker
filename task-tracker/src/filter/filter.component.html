@@ -1,0 +1,4 @@
+<div class="filter-buttons">
+    <button mat-button *ngFor="let status of statuses; let last = last" (click)="selectStatus(status)" 
+    [ngStyle]="{'margin-right.px': last ? 0 : 17}">{{ status }}</button>
+</div>

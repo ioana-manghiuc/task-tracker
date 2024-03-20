@@ -2,7 +2,17 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
-  color:aqua;
+}
+
+.buttons button{
+  background-color: #bad0d8;
+  color:#1e2246;
+  padding:7px 7px; 
+}
+
+.mat-icon{
+  font-size: 25px;
+  font-weight: 590;
 }
 
 .toggle-button {
