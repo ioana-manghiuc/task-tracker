@@ -1,7 +1,23 @@
 .example-card {
     max-width: 400px;
+    min-height: 200px;
   }
 
   mat-card{
     background-color:#92a1b0 ;
   }
+
+  .task-columns{
+     display: flex;
+     background-color: #d1e0d1;
+     padding: 7px;    
+     justify-content: space-around;
+    }
+
+   .task-column
+    {
+      min-height: 80;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+    }

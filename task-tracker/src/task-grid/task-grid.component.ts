@@ -7,16 +7,17 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgFor } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-grid',
   standalone: true,
   imports: [TaskCardComponent, MatCardModule, MatButtonModule, MatFormFieldModule, 
-    MatSelectModule, NgFor],
+    MatSelectModule, NgFor, NgIf],
   templateUrl: './task-grid.component.html',
   styleUrl: './task-grid.component.scss'
 })
 export class TaskGridComponent {
    @Input() tasks: Task[] = [];
-   statusOptions: Status[] = Object.values(Status);
+  //  statusOptions: Status[] = Object.values(Status);
 }
