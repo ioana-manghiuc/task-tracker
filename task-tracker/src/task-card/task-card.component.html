@@ -3,12 +3,12 @@
     <mat-card-title>{{ task?.title }}</mat-card-title>
     <mat-card-subtitle>{{ task?.description }}</mat-card-subtitle>
   </mat-card-header>
-  <!-- <mat-card-actions>
-    <mat-form-field>
-      <mat-label>Status</mat-label>
-       <mat-select [(ngModel)]="task?.status" [disabled]="true">
-        <mat-option *ngFor="let status of statusOptions" [value]="status">{{ status }}</mat-option>
-      </mat-select> 
-    </mat-form-field>
-  </mat-card-actions> -->
+  <mat-card-actions class="actions">
+    <button mat-icon-button class="edit-button" (click)="editTask(task)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button class="delete-button" (click)="deleteTask(task)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>

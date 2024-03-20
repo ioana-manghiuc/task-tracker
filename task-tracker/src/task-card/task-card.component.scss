@@ -1,6 +1,7 @@
 mat-card{
     background-color:#92a1b0 ;
     min-height: 300px;
+    position: relative;
   }
 
   .example-card mat-card-header mat-card-title {
@@ -14,4 +15,20 @@ mat-card{
     color: #d4dee3; 
     margin-top: 15px;
     font-size: 17px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end; 
+    margin-top: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 8px
+  }
+  
+  .actions button {
+    margin-left: 8px; 
+    background-color: rgb(222, 190, 205);
+    color:rgb(73, 33, 52);
   }
