@@ -1,0 +1,32 @@
+<div class="task-rows">
+  <div class="task-row">
+    <h2>To do</h2>
+    <div *ngFor="let task of tasks">
+      <div *ngIf="task.status === 'To do'" class="task-item">
+        <div class="task-name">{{ task.title }}</div>
+        <div class="task-description">{{ task.description }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="task-row">
+    <h2 >In progress</h2>
+    <div *ngFor="let task of tasks">
+      <div *ngIf="task.status === 'In progress'" class="task-item">
+        <div class="task-name">{{ task.title }}</div>
+        <div class="task-description">{{ task.description }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task-row">
+    <h2>Done</h2>
+    <div *ngFor="let task of tasks">
+      <div *ngIf="task.status === 'Done'" class="task-item">
+        <div class="task-name">{{ task.title }}</div>
+        <div class="task-description">{{ task.description }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+

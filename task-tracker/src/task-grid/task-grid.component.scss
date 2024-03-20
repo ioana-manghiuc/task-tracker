@@ -1,5 +1,4 @@
 .example-card {
-    max-width: 400px;
     min-height: 200px;
   }
 
@@ -7,9 +6,14 @@
     background-color:#92a1b0 ;
   }
 
+  .task-column h2{
+    color:#6a0909;
+    font-weight: 500;
+    font-size:x-large;
+  }
+
   .task-columns{
      display: flex;
-     background-color: #d1e0d1;
      padding: 7px;    
      justify-content: space-around;
     }

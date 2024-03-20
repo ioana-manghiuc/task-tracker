@@ -2,3 +2,16 @@ mat-card{
     background-color:#92a1b0 ;
     min-height: 200px;
   }
+
+  .example-card mat-card-header mat-card-title {
+    font-size: 21px;  
+    font-weight: 450; 
+    color:#000000
+  }
+
+  .example-card mat-card-header mat-card-subtitle {
+    font-size: 16px; 
+    color: #d4dee3; 
+    margin-top: 15px;
+    font-size: 17px;
+  }

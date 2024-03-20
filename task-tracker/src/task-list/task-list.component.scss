@@ -1,0 +1,39 @@
+.task-item {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color:#92a1b0;
+    min-height: 100px;
+}
+
+.task-name {
+    font-size: 21px; 
+    color: rgb(0, 0, 0); 
+    font-weight: 450;
+  }
+
+  .task-description {
+    color: #d4dee3; 
+    margin-top: 15px;
+    font-size: 17px;
+  }
+
+  .task-row h2{
+    color:#6a0909;
+    font-weight: 500;
+    font-size:x-large;
+  }
+
+  .task-rows{
+    padding: 7px;    
+    justify-content: space-around;
+   }
+
+  .task-row
+   {
+     min-height: 80;
+     margin: 10px;
+     display: flex;
+     flex-direction: column;
+   }
