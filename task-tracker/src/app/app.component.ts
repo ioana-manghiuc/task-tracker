@@ -6,6 +6,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {TasksViewComponent} from '../tasks-view/tasks-view.component';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   imports: [RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, 
-    TasksViewComponent, MatCardModule, FormsModule],
+    TasksViewComponent, MatCardModule, FormsModule, RouterLink],
 })
 export class AppComponent {
   title = 'task-tracker';

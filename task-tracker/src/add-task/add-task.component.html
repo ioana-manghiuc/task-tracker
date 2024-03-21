@@ -1,0 +1,21 @@
+
+<div class="form-group" >
+    <div>
+      <label for="taskName" class = "label-format">Task Name: </label>
+      <input type="text" id="taskName" name="taskName" [(ngModel)]="taskName"
+      class="form-control" required />
+    </div>
+    <div>
+      <label for="taskDescription" class="label-format">Description: </label>
+    </div>
+    <div><textarea id="taskDescription" name="taskDescription" [(ngModel)]="taskDescription" 
+        class="form-control" rows="13" cols="37"></textarea></div>
+  </div>
+  
+  <div class="button-container">
+    <form (ngSubmit)="onSubmit()">
+      <button type="submit" class="button-format">Submit</button>
+    </form>
+  
+    <button mat-button (click)="cancel()" class="button-format">Cancel</button>
+  </div>

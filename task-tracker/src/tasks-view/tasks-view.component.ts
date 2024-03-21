@@ -6,10 +6,13 @@ import { TaskListComponent } from '../task-list/task-list.component';
 import { NgFor, NgIf } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import { FilterComponent } from '../filter/filter.component';
+import { RouterOutlet } from '@angular/router';
+
 @Component({
   selector: 'app-tasks-view',
   standalone: true,
-  imports: [TaskGridComponent, TaskListComponent, NgFor, NgIf, MatIconModule, FilterComponent],
+  imports: [TaskGridComponent, TaskListComponent, NgFor, NgIf, MatIconModule, 
+    FilterComponent, RouterOutlet],
   templateUrl: './tasks-view.component.html',
   styleUrl: './tasks-view.component.scss'
 })

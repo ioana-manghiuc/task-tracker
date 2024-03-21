@@ -10,9 +10,11 @@
   <div *ngIf="isList; else gridView">
     <app-task-list [tasks]="tasks"></app-task-list>
   </div>
-  
-  <ng-template #gridView>
+   
+ <ng-template #gridView>
     <div style="margin-top: 40px; margin-left: 13px; margin-right:40px; margin-bottom:40px;">
       <app-task-grid [tasks]="tasks"></app-task-grid>
     </div>
   </ng-template>
+  
+  <!-- <router-outlet></router-outlet> -->
