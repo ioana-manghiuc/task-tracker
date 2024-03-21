@@ -1,13 +1,16 @@
 .buttons {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
+  margin-right:11px;
+  margin-top:11px;
 }
 
 .buttons button{
   background-color: #bad0d8;
   color:#1e2246;
   padding:7px 7px; 
+  margin-right:11px;
 }
 
 .mat-icon{
