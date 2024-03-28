@@ -4,33 +4,36 @@ import { NgFor, NgIf } from '@angular/common';
 import { FilterComponent } from '../filter/filter.component';
 import {MatIconModule} from '@angular/material/icon';
 import { Status } from '../status.enum';
+import { TaskService } from '../app/services/task.service';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
   imports: [NgFor, NgIf, FilterComponent, MatIconModule],
+  providers: [TaskService],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent implements OnInit {
-  @Input() tasks: Task[] = [];
+  tasks: Task[] = [];
   filteredTasks: Task[] = [];
 
-  constructor() { }
+  constructor(
+    private taskService: TaskService,
+  ) {}
+
 
   ngOnInit(): void {
-    this.filteredTasks = [...this.tasks];
+    this.tasks = this.taskService.getTasks();
+    this.filteredTasks = [...this.taskService.tasks];
   }
 
   handleStatusSelected(status: Status) {
-    this.filteredTasks = this.tasks.filter(task => task.status === status);
+    this.filteredTasks = this.taskService.tasks.filter(task => task.status === status);
   }
 
   deleteTask(task: Task): void {
-    const index = this.tasks.indexOf(task);
-    if (index !== -1) {
-      this.tasks.splice(index, 1);
-    }
+    this.taskService.deleteTask(task.id);
   }
 
   editTask(task: Task): void {

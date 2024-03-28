@@ -21,11 +21,7 @@ export class TasksViewComponent implements OnInit{
   tasks: Task[] = [];
 
   ngOnInit() {
-    this.tasks = [
-      { id: '1', title: 'Create your first Angular app', description: 'Create a new Angular application for managing tasks.', status: Status.ToDo },
-      { id: '2', title: 'Learn about HTML and SCSS', description: 'Learn about the basic concepts about HTML and CSS+SCSS', status: Status.InProgress },
-      { id: '3', title: 'Prepare Angular and .Net Core prerequisites', description: 'Create a document that contains all the prerequisites needed for the BRTA course', status: Status.Done }
-    ];
+    this.tasks = [ ];
   }
 
   isList = true;
