@@ -5,11 +5,13 @@ import { FilterComponent } from '../filter/filter.component';
 import {MatIconModule} from '@angular/material/icon';
 import { Status } from '../status.enum';
 import { TaskService } from '../app/services/task.service';
+import { EditTaskComponent } from '../edit-task/edit-task.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgFor, NgIf, FilterComponent, MatIconModule],
+  imports: [NgFor, NgIf, FilterComponent, MatIconModule, EditTaskComponent],
   providers: [TaskService],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
@@ -20,6 +22,7 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
+    private dialog: MatDialog
   ) {}
 
 
@@ -37,8 +40,14 @@ export class TaskListComponent implements OnInit {
   }
 
   editTask(task: Task): void {
-    console.log('Editing task:', task);
-    // logic
-  }
+    const dialogRef = this.dialog.open(EditTaskComponent, {
+       data: task,
+     });
+ 
+     dialogRef.afterClosed().subscribe((result) => {
+       console.log('The dialog was closed');
+       this.taskService.editTask(task);
+     });
+   }
 
 }
