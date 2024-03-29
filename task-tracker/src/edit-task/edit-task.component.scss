@@ -1,10 +1,42 @@
 #editTaskContent{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  #editTaskActions {
-    justify-content: end;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  background-color: #cacaca; 
+  color:#232121 ; 
+  min-width: 880px;
+}
+    
+#editTaskActions {
+  justify-content: flex-end;
+  font-size: 41px;
+}
+
+.box{
+  font-size: 31px;
+  justify-content: space-around;
+  height: auto;
+  font-size: 27px;
+  caret-color: #cacaca;
+}
+
+.input{
+  min-width:830px;
+  margin-top:13px;
+  justify-content: space-around;
+  height: auto;
+  font-size: 27px;
+}
+
+.custom-label {
+  font-size:21px;
+  color: rgb(218, 210, 210);
+}
+
+.button{
+  font-size:31px;
+  color: rgb(218, 210, 210);
+  margin: 10,10,10,10;
+  padding:7px;
+}

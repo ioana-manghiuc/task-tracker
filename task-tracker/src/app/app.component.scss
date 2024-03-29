@@ -2,10 +2,14 @@
     flex: 1 1 auto;
   }
   mat-toolbar {
-    background-color: #1e2246; 
+    background-color: #212121; 
+    height:110px;
   }
   
   button {
-    color: #ffffff; 
     font-size: 21px;
+  }
+
+  .bar-button{
+    font-size: 31px;
   }

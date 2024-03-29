@@ -1,25 +1,32 @@
 .buttons {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 11px;
-  margin-right:11px;
-  margin-top:11px;
+  margin-bottom: 3px;
+  margin-right: 11px;
+  margin-top: 11px;
 }
 
-.buttons button{
-  background-color: #bad0d8;
-  color:#1e2246;
-  padding:7px 7px; 
-  margin-right:11px;
+.buttons button {
+  background-color: rgb(230, 215, 222);
+  color: rgb(107, 79, 82);
+  margin-right: 11px;
+  border-radius: 5px; 
+  width: 70px;
+  height:70px;
+  padding:0;
 }
 
 .mat-icon{
-  font-size: 25px;
-  font-weight: 590;
+  font-size: 50px;
+  font-weight: 570;
+  width: 100%;
+  height: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .toggle-button {
   margin-left: 10px;
   font-size: 16px;
-  padding: 10px 20px;
 }

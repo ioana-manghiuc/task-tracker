@@ -2,14 +2,15 @@
     display: flex;
     justify-content: flex-start;
     margin-left: 21px;
-    margin-bottom: 50px;
+    margin-bottom: 41px;
   }
 
   .filter-buttons button {
-    font-size: 19px; 
-    font-weight: 550;
+    font-size: 27px; 
+    font-weight: 600;
     padding: 12px 24px; 
     margin-right: 21px;
-    background-color: rgb(222, 190, 205);
-    color:rgb(73, 33, 52);
+    background-color: rgb(230, 215, 222);
+    color:rgb(120, 20, 32);
+    border-radius: 5px;
   }
