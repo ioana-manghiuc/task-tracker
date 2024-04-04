@@ -7,7 +7,7 @@ import { Status } from '../status.enum';
 import { TaskService } from '../app/services/task.service';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { MatDialog } from '@angular/material/dialog';
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-task-list',
   standalone: true,
@@ -27,16 +27,17 @@ export class TaskListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
-    this.filteredTasks = [...this.taskService.tasks];
+    this.taskService.getTasks().subscribe(tasks => {this.tasks = tasks
+      this.filteredTasks = tasks;
+    });
   }
 
   handleStatusSelected(status: Status) {
-    this.filteredTasks = this.taskService.tasks.filter(task => task.status === status);
+    this.filteredTasks = this.tasks.filter(task => task.status === status);
   }
 
   deleteTask(task: Task): void {
-    this.taskService.deleteTask(task.id);
+    this.taskService.deleteTask(task).subscribe();
   }
 
   editTask(task: Task): void {

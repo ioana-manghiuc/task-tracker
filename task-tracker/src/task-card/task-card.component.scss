@@ -3,12 +3,14 @@ mat-card{
     min-height: 300px;
     position: relative;
     padding:17px;
+    margin-bottom: 13px;
   }
 
   .example-card mat-card-header mat-card-title {
     font-size: 41px;  
     font-weight: 450; 
     color:#ece9d7;
+    line-height: 1.3;
   }
 
   .example-card mat-card-header mat-card-subtitle {

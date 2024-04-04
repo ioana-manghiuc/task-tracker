@@ -5,19 +5,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import{MatInputModule} from '@angular/material/input';
 import { Task } from '../task';
 import{MAT_DIALOG_DATA, MatDialogRef, MatDialogActions, MatDialogClose,
-MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
-
+MatDialogContent,  MatDialogTitle} from '@angular/material/dialog';
+import { MatOption } from '@angular/material/core';
+import { Status } from '../status.enum';
+import { NgFor } from '@angular/common';
+import { MatRadioModule } from '@angular/material/radio';
 @Component({
   selector: 'app-edit-task',
   standalone: true,
   imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDialogActions, MatDialogClose,
-    MatDialogContent, MatDialogTitle],
+    MatDialogContent, MatDialogTitle, MatOption, NgFor, MatRadioModule],
   templateUrl: './edit-task.component.html',
   styleUrl: './edit-task.component.scss'
 })
 export class EditTaskComponent {
   constructor(public dialogRef: MatDialogRef<EditTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Task) {}
+
+    statuses: Status[] = [Status.ToDo, Status.InProgress, Status.Done];
 
     save():void{
         this.dialogRef.close();

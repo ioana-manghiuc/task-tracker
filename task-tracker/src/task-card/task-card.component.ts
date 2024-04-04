@@ -27,7 +27,7 @@ export class TaskCardComponent {
   constructor (private dialog: MatDialog, private taskService: TaskService) {}
 
   deleteTask(task: Task): void {
-    this.taskService.deleteTask(task.id);
+    this.taskService.deleteTask(task).subscribe();
   }
 
   editTask(task: Task): void {

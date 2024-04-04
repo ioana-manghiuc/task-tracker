@@ -2,7 +2,7 @@ import { Status } from "./status.enum";
 
 export interface Task {
     id: string;
-    title: string;
+    name: string;
     description: string;
     status: Status;
     assignedTo: string;

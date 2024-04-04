@@ -16,6 +16,7 @@ import { Status } from '../status.enum';
 export class AddTaskComponent {
   taskName: string;
   taskDescription: string;
+  taskAssignTo: string;
 
   constructor(private router: Router, private taskService: TaskService ) {}
 
@@ -27,15 +28,19 @@ export class AddTaskComponent {
   }
 
   onSubmit() {
-    this.router.navigate(['/']);
-    const task = { 
-      id: '1',
-      title: this.taskName,
+    const newTask =  <Task>{ 
+    // id: '1',
+      name: this.taskName,
       description: this.taskDescription,
       status: Status.ToDo,
-      assignedTo: 'someone',
+      assignedTo: this.taskAssignTo,
     }
-    this.taskService.addTask(task);
+    this.taskService.addTask(newTask)
+      .subscribe(task => {
+        console.log('Task added successfully:', task);
+        this.router.navigate(['/']);
+      });
+
   }
 
   cancel() {

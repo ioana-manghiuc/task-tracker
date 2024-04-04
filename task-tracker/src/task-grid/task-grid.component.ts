@@ -26,10 +26,6 @@ export class TaskGridComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
-   // this.tasks = [...this.taskService.tasks];
+    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
-
-
-  //  statusOptions: Status[] = Object.values(Status);
 }

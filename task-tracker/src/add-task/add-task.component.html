@@ -10,6 +10,11 @@
     </div>
     <div><textarea id="taskDescription" name="taskDescription" [(ngModel)]="taskDescription" 
         class="form-control" rows="13" cols="37"></textarea></div>
+        <div>
+          <label for="taskAssignTo" class = "label-format">Assigned To: </label>
+          <input type="text" id="taskAssignTo" name="taskAssignTo" [(ngModel)]="taskAssignTo"
+          class="form-control" required />
+        </div>
   </div>
   
   <div class="button-container">
