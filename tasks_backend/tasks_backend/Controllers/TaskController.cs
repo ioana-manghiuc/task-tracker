@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using tasks_backend.Models;
+using tasks_backend.Services;
 
 namespace tasks_backend.Controllers
 {
@@ -7,17 +8,21 @@ namespace tasks_backend.Controllers
     [Route("[controller]")]
     public class TaskController : ControllerBase
     {
-        static List<TaskModel> _tasks = new List<TaskModel> { new TaskModel { Id = Guid.NewGuid(), Title = "First Task", Description = "First Task Description" , AssignedTo = "Author_1", Status = "To do"},
-                    new TaskModel { Id = Guid.NewGuid(), Title = "Second Task", Description = "Second Task Description", AssignedTo = "Author_1", Status = "To do" },
-                    new TaskModel { Id = Guid.NewGuid(), Title = "Third Task", Description = "Third Task Description", AssignedTo = "Author_2", Status = "To do"  },
-                    new TaskModel { Id = Guid.NewGuid(), Title = "Fourth Task", Description = "Fourth Task Description", AssignedTo = "Author_3", Status = "To do"  },
-                    new TaskModel { Id = Guid.NewGuid(), Title = "Fifth Task", Description = "Fifth Task Description", AssignedTo = "Author_4", Status = "To do"  }
-                    };
+        List<TaskModel> _tasks;
+
+        ITaskCollectionService _taskCollectionService;
+
+        public TaskController(ITaskCollectionService taskCollectionService)
+        {
+            _taskCollectionService = taskCollectionService ?? throw new ArgumentNullException(nameof(TaskCollectionService));
+        }
 
         [HttpGet("tasks")]
         public IActionResult GetTasks()
         {
-            return Ok(_tasks);
+            List<TaskModel> tasks = _taskCollectionService.GetAll();
+            return Ok(tasks);
+
         }
 
         [HttpGet("server-error")]
