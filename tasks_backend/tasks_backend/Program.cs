@@ -1,5 +1,7 @@
+using Microsoft.Extensions.Options;
 using System.Reflection;
 using tasks_backend.Services;
+using tasks_backend.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,10 @@ builder.Services.AddSwaggerGen(c => {
 });
 
 builder.Services.AddSingleton<ITaskCollectionService, TaskCollectionService>();
+
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection(nameof(MongoDBSettings)));
+builder.Services.AddSingleton<IMongoDBSettings>(sp => sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
+
 
 var app = builder.Build();
 

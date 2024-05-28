@@ -17,13 +17,13 @@ namespace tasks_backend.Controllers
             _taskCollectionService = taskCollectionService ?? throw new ArgumentNullException(nameof(TaskCollectionService));
         }
 
-        [HttpGet("tasks")]
-        public IActionResult GetTasks()
+        [HttpGet]
+        public async Task<IActionResult> GetTasks()
         {
-            List<TaskModel> tasks = _taskCollectionService.GetAll();
+            List<TaskModel> tasks = await _taskCollectionService.GetAll();
             return Ok(tasks);
-
         }
+
 
         [HttpGet("server-error")]
         public IActionResult ServerError()
