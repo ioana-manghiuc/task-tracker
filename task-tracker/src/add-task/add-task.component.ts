@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TaskService } from '../app/services/task.service';
 import { Task } from '../task';
 import { Status } from '../status.enum';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-add-task',
@@ -18,7 +19,8 @@ export class AddTaskComponent {
   taskDescription: string;
   taskAssignTo: string;
 
-  constructor(private router: Router, private taskService: TaskService ) {}
+  constructor(private router: Router, private taskService: TaskService, 
+              private notificationService: NotificationService) {}
 
   addTask() {
     console.log('Task Name:', this.taskName);
@@ -28,22 +30,30 @@ export class AddTaskComponent {
   }
 
   onSubmit() {
-    const newTask =  <Task>{ 
-    // id: '1',
-      name: this.taskName,
-      description: this.taskDescription,
-      status: Status.ToDo,
-      assignedTo: this.taskAssignTo,
+      const newTask =  <Task>{ 
+      // id: '1',
+        name: this.taskName,
+        description: this.taskDescription,
+        status: Status.ToDo,
+        assignedTo: this.taskAssignTo,
+      }
+      this.taskService.addTask(newTask)
+        .subscribe(task => {
+          this.notificationService.sendMessage("BroadcastMessage", [task])
+          // Optionally, reset the form fields after submission
+          this.resetForm();
+          this.router.navigate(['/']);
+        });
+      }
+      
+    resetForm() {
+      this.taskName = '';
+      this.taskDescription = '';
+      this.taskAssignTo = '';
     }
-    this.taskService.addTask(newTask)
-      .subscribe(task => {
-        console.log('Task added successfully:', task);
-        this.router.navigate(['/']);
-      });
+
+    cancel() {
+      this.router.navigate(['/']);
+    }
 
   }
-
-  cancel() {
-    this.router.navigate(['/']);
-  }
-}

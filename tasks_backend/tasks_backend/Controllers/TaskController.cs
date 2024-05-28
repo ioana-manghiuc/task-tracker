@@ -18,7 +18,7 @@ namespace tasks_backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTasks()
+        public async Task<ActionResult<List<TaskModel>>> GetTasks()
         {
             List<TaskModel> tasks = await _taskCollectionService.GetAll();
             return Ok(tasks);
@@ -26,13 +26,13 @@ namespace tasks_backend.Controllers
 
 
         [HttpGet("server-error")]
-        public IActionResult ServerError()
+        public ActionResult ServerError()
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "Error in processing the Task");
         }
 
         [HttpDelete("{id}", Name = "DeleteTask")]
-        public IActionResult Delete(Guid id)
+        public ActionResult Delete(Guid id)
         {
             var task = _tasks.FirstOrDefault(t => t.Id == id);
             if (task == null)
@@ -45,7 +45,7 @@ namespace tasks_backend.Controllers
         }
 
         [HttpPost(Name = "CreateTask")]
-        public IActionResult CreateTask([FromBody] TaskModel task)
+        public ActionResult<TaskModel> CreateTask([FromBody] TaskModel task)
         {
             if (task == null)
             {
@@ -58,7 +58,7 @@ namespace tasks_backend.Controllers
         }
 
         [HttpPut("{id}", Name = "UpdateTask")]
-        public IActionResult UpdateTask(Guid id, [FromBody] TaskModel updatedTask)
+        public ActionResult UpdateTask(Guid id, [FromBody] TaskModel updatedTask)
         {
             if (updatedTask == null)
             {

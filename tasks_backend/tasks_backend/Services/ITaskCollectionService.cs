@@ -4,7 +4,7 @@ namespace tasks_backend.Services
 {
     public interface ITaskCollectionService : ICollectionService<TaskModel>
     {
-        List<TaskModel> GetTasksByStatus(string status);
+        Task<List<TaskModel>> GetTasksByStatus(string status);
 
     }
 }

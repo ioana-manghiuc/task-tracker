@@ -1,20 +1,24 @@
+<p>
+  {{notificationMessage}}
+</p>
+
 <div class="buttons">
-    <button mat-button (click)="toggleView('grid')">
-      <mat-icon>grid_on</mat-icon> 
-    </button>
-    <button mat-button (click)="toggleView('list')">
-      <mat-icon>list</mat-icon> 
-    </button>
+  <button mat-button (click)="toggleView('grid')">
+    <mat-icon>grid_on</mat-icon> 
+  </button>
+  <button mat-button (click)="toggleView('list')">
+    <mat-icon>list</mat-icon> 
+  </button>
+</div>
+
+<div *ngIf="isList; else gridView">
+  <app-task-list></app-task-list>
+</div>
+
+<ng-template #gridView>
+  <div style="margin-top: 40px; margin-left: 13px; margin-right:40px; margin-bottom:40px;">
+    <app-task-grid></app-task-grid>
   </div>
-  
-  <div *ngIf="isList; else gridView">
-    <app-task-list></app-task-list>
-  </div>
-   
- <ng-template #gridView>
-    <div style="margin-top: 40px; margin-left: 13px; margin-right:40px; margin-bottom:40px;">
-      <app-task-grid></app-task-grid>
-    </div>
-  </ng-template>
-  
-  <!-- <router-outlet></router-outlet> -->
+</ng-template>
+
+<!-- <router-outlet></router-outlet> -->
