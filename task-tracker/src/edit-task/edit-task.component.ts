@@ -27,7 +27,7 @@ export class EditTaskComponent {
     }
 
     save():void{
-        this.dialogRef.close();
+        this.dialogRef.close(this.data);
     }
 
     cancel(): void{

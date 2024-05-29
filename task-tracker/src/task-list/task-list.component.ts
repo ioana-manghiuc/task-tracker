@@ -46,9 +46,10 @@ export class TaskListComponent implements OnInit {
      });
  
      dialogRef.afterClosed().subscribe((result) => {
-       console.log('The dialog was closed');
-       this.taskService.editTask(task);
-     });
+      console.log('The dialog was closed');
+      this.taskService.editTask(task).subscribe(() =>
+      {console.log('Task edited successfully!');} );
+    });
    }
 
 }
