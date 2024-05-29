@@ -8,14 +8,16 @@
 
 .task-column h2{
   color:#6a0909;
-  font-weight: 50px;
+  font-weight: 500;
   font-size:x-large;
+  font-weight: 500;
 }
 
 .task-columns{
   display: flex;
   padding: 7px;    
   justify-content: space-around;
+  font-weight: 500;
 }
 
 .task-column
@@ -25,12 +27,16 @@
   margin: 21px;
   display: flex;
   flex-direction: column;
+  font-family: monospace;
+  font-weight: 500;
 }
 
 .task-columns .task-column h2 {
-  font-size: 37px; 
-  color:#6a0909;
-  background-color: rgb(230, 215, 222);
+  font-size: 41px; 
+  font-weight: 550;
+  background-color: rgb(207, 204, 216);
+  color:rgb(80, 20, 120);
   border-radius: 5px;
-  padding: 7px;
+  padding: 17px;
+  font-family: monospace;
 }

@@ -27,7 +27,7 @@ builder.Services.AddCors(options => {
     options.AddPolicy(name: "CorsPolicy",
                               policy =>
                               {
-                                  policy.WithOrigins("http://localhost:4200")
+                                  policy.WithOrigins("http://localhost:4200", "http://localhost:5099")
                                   .AllowAnyHeader()
                                   .AllowAnyMethod()
                                   .AllowCredentials();
@@ -44,12 +44,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("CorsPolicy");
 app.UseWebSockets(new WebSocketOptions
 {
     KeepAliveInterval = TimeSpan.Zero,
 });
 app.UseRouting();
+app.UseAuthorization();
+
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<NotificationsHub>("/hub/notifications");
@@ -57,7 +60,6 @@ app.UseEndpoints(endpoints =>
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.MapControllers();
 

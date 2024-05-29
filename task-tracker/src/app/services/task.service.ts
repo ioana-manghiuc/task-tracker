@@ -11,7 +11,7 @@ export class TaskService {
   headers: HttpHeaders | { [header: string]: string | string[]; } | undefined;
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl="http://localhost:5099";
+  baseUrl="http://localhost:5099/Task";
 
   readonly httpOptions = {
     headers: new HttpHeaders({

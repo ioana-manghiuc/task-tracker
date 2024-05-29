@@ -31,51 +31,33 @@ namespace tasks_backend.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError, "Error in processing the Task");
         }
 
-        [HttpDelete("{id}", Name = "DeleteTask")]
-        public ActionResult Delete(Guid id)
-        {
-            var task = _tasks.FirstOrDefault(t => t.Id == id);
-            if (task == null)
-            {
-                return NotFound();
-            }
-
-            _tasks.Remove(task);
-            return Ok("Task deleted");
-        }
-
         [HttpPost(Name = "CreateTask")]
-        public ActionResult<TaskModel> CreateTask([FromBody] TaskModel task)
+        public async Task<bool> CreateTask([FromBody] TaskModel task)
         {
-            if (task == null)
-            {
-                return BadRequest("Task cannot be null");
-            }
-
-            task.Id = Guid.NewGuid();
-            _tasks.Add(task);
-            return Ok(task);
+            return await _taskCollectionService.Create(task);
         }
 
-        [HttpPut("{id}", Name = "UpdateTask")]
-        public ActionResult UpdateTask(Guid id, [FromBody] TaskModel updatedTask)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(Guid id)
         {
-            if (updatedTask == null)
+            var deleted = await _taskCollectionService.Delete(id);
+            if (!deleted)
             {
-                return BadRequest("Task is required");
+                return NotFound(); // Task-ul nu a fost găsit și șters
             }
-
-            var task = _tasks.FirstOrDefault(t => t.Id == id);
-            if (task == null)
-            {
-                return NotFound();
-            }
-
-            updatedTask.Id = id;
-            int index = _tasks.IndexOf(task);
-            _tasks[index] = updatedTask;
-
-            return Ok("Task updated");
+            return NoContent(); // Răspuns de succes fără conținut
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTask(Guid id, [FromBody] TaskModel taskModel)
+        {
+            var updated = await _taskCollectionService.Update(id, taskModel);
+            if (!updated)
+            {
+                return NotFound(); // Task-ul nu a fost găsit și actualizat
+            }
+            return Ok(); // Răspuns de succes
+        }
+
     }
 }

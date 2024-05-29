@@ -9,6 +9,7 @@
     margin-bottom: 20px;
     margin-top:20px;
     margin-left:20px;
+    font-family: monospace;
   }
 
   .form-control{
@@ -16,11 +17,13 @@
     margin-bottom: 20px;
     margin-top:20px;
     margin-left:20px;
+    font-family: monospace;
   }
 
   .input-container{
     margin-bottom:20px;
     margin-left:20px;
+    font-family: monospace;
   }
   
   .button-container {
@@ -31,11 +34,13 @@
   }
   
   .button-format {
-    font-size: 27px;
+    font-size: 41px;
     font-weight: 550;
+    font-family: monospace;
     padding: 12px 24px;
     margin-bottom: 10px;
-    background-color: rgb(230, 215, 222);
-    color:rgb(120, 20, 32);
+    background-color: rgb(207, 204, 216);
+    color:rgb(80, 20, 120);
     border-radius: 5px;
+    border-color: seashell;
   }
