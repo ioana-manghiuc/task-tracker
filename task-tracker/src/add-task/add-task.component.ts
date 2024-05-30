@@ -31,7 +31,6 @@ export class AddTaskComponent {
 
   onSubmit() {
       const newTask =  <Task>{ 
-      // id: '1',
         name: this.taskName,
         description: this.taskDescription,
         status: Status.ToDo,

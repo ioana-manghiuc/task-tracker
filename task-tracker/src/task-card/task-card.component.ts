@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Task } from '../task';
 import { Status } from '../status.enum';
 import {MatCardModule} from '@angular/material/card';
@@ -10,6 +10,7 @@ import { NgModel } from '@angular/forms';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskService } from '../app/services/task.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-task-card',
@@ -23,11 +24,15 @@ import { TaskService } from '../app/services/task.service';
 export class TaskCardComponent {
   @Input() task: Task | undefined;
   statusOptions: Status[] = Object.values(Status);
+  @Output() taskDeleted: EventEmitter<Task> = new EventEmitter<Task>();
 
   constructor (private dialog: MatDialog, private taskService: TaskService) {}
 
-  deleteTask(task: Task): void {
-    this.taskService.deleteTask(task).subscribe();
+  deleteTask(taskToDelete: Task) {
+    this.taskService.deleteTask(taskToDelete).subscribe(() => {
+      console.log('Task deleted successfully');
+      this.taskDeleted.emit(this.task); // emit the event after deletion
+    });
   }
 
   editTask(task: Task): void {

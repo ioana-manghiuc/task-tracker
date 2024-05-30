@@ -24,13 +24,6 @@ namespace tasks_backend.Controllers
             return Ok(tasks);
         }
 
-
-        [HttpGet("server-error")]
-        public ActionResult ServerError()
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error in processing the Task");
-        }
-
         [HttpPost(Name = "CreateTask")]
         public async Task<bool> CreateTask([FromBody] TaskModel task)
         {
@@ -43,9 +36,9 @@ namespace tasks_backend.Controllers
             var deleted = await _taskCollectionService.Delete(id);
             if (!deleted)
             {
-                return NotFound(); // Task-ul nu a fost găsit și șters
+                return NotFound(); // task not found and deleted
             }
-            return NoContent(); // Răspuns de succes fără conținut
+            return NoContent(); // response for success
         }
 
         [HttpPut("{id}")]
@@ -54,9 +47,9 @@ namespace tasks_backend.Controllers
             var updated = await _taskCollectionService.Update(id, taskModel);
             if (!updated)
             {
-                return NotFound(); // Task-ul nu a fost găsit și actualizat
+                return NotFound(); // task not found and updated
             }
-            return Ok(); // Răspuns de succes
+            return Ok(); // success
         }
 
     }

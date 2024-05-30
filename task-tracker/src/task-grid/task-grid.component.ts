@@ -28,4 +28,8 @@ export class TaskGridComponent implements OnInit{
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
+
+  onDeleteTask(deletedTask: Task) {
+    this.tasks = this.tasks.filter(task => task.id !== deletedTask.id);
+  }
 }
